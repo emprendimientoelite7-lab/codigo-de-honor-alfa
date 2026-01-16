@@ -1,0 +1,46 @@
+{
+  "brand": "Código Alfa",
+  "headline": "Domina tu mente, destruye tus miedos y recupera el control.",
+  "subheadline": "Accede al eBook “Código Alfa” + 4 bonos. Oferta de pago único y acceso inmediato por Hotmart.",
+  "primaryCta": {
+    "label": "Comprar ahora (con bonos)",
+    "link": "https://go.hotmart.com/I103881551M?ap=1990",
+    "note": " *Link de afiliado"
+  },
+  "offers": [
+    {
+      "title": "Código Alfa + 4 Bonos (Pago único)",
+      "price": "AHORA 19,99 USD",
+      "description": "Incluye el libro digital y el arsenal de bonos. Acceso inmediato tras la compra.",
+      "bullets": [
+        "Libro 100% digital (correo + Hotmart)",
+        "Bono 1: Manual 21 días para eliminar miedos",
+        "Bono 2: Hombre Alfa Magnético",
+        "Bono 3: Energía NOFAP",
+        "Bono 4: Ingresos Alfa",
+        "Garantía de 7 días en Hotmart"
+      ],
+      "buyLink": "https://go.hotmart.com/I103881551M?ap=1990",
+      "buyLabel": "Sí, lo quiero",
+      "moreLink": ""
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿El libro es físico o digital?",
+      "a": "Es 100% digital y puedes leerlo desde celular, computadora o tablet."
+    },
+    {
+      "q": "¿Cómo recibo el libro y los bonos?",
+      "a": "Después de comprar, Hotmart te envía un correo con los accesos e instrucciones para descargar."
+    },
+    {
+      "q": "¿Qué métodos de pago hay disponibles?",
+      "a": "Depende del país, pero normalmente incluye tarjeta, PayPal y opciones locales (si aplica)."
+    },
+    {
+      "q": "¿Tiene garantía?",
+      "a": "Sí, garantía de 7 días (gestionada por Hotmart)."
+    }
+  ]
+}
