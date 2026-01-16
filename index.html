@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Página de Ventas</title>
+  <style>
+    body{font-family:Arial, sans-serif; margin:0; background:#0b0b0f; color:#fff;}
+    .wrap{max-width:900px; margin:0 auto; padding:32px 18px;}
+    .card{background:#141420; border:1px solid #2a2a3a; border-radius:16px; padding:22px; margin:16px 0;}
+    h1{font-size:34px; margin:0 0 10px;}
+    p{line-height:1.5; opacity:.92}
+    .btn{display:inline-block; padding:12px 16px; border-radius:12px; background:#fff; color:#000; text-decoration:none; font-weight:700;}
+    .btn.secondary{background:transparent; border:1px solid #fff; color:#fff}
+    .grid{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+    .price{font-size:26px; font-weight:800}
+    .small{font-size:13px; opacity:.75}
+    ul{margin:10px 0 0 18px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1 id="headline"></h1>
+      <p id="subheadline"></p>
+      <a id="ctaTop" class="btn" href="#" target="_blank" rel="nofollow noopener">Comprar ahora</a>
+      <span class="small" id="ctaNote"></span>
+    </div>
+
+    <div class="grid" id="offers"></div>
+
+    <div class="card">
+      <h2>Preguntas frecuentes</h2>
+      <div id="faq"></div>
+    </div>
+
+    <div class="card">
+      <p class="small">© <span id="brand"></span> — <span id="year"></span></p>
+    </div>
+  </div>
+
+  <script>
+    async function main(){
+      const res = await fetch('./data.json', { cache: 'no-store' });
+      const data = await res.json();
+
+      document.getElementById('headline').textContent = data.headline;
+      document.getElementById('subheadline').textContent = data.subheadline;
+      document.getElementById('brand').textContent = data.brand;
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const ctaTop = document.getElementById('ctaTop');
+      ctaTop.href = data.primaryCta.link;
+      ctaTop.textContent = data.primaryCta.label || 'Comprar ahora';
+      document.getElementById('ctaNote').textContent = data.primaryCta.note || '';
+
+      const offers = document.getElementById('offers');
+      offers.innerHTML = data.offers.map(o => `
+        <div class="card">
+          <h3>${o.title}</h3>
+          <div class="price">${o.price}</div>
+          <p>${o.description}</p>
+          <ul>${(o.bullets||[]).map(b=>`<li>${b}</li>`).join('')}</ul>
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn" href="${o.buyLink}" target="_blank" rel="nofollow noopener">${o.buyLabel || 'Comprar'}</a>
+            ${o.moreLink ? `<a class="btn secondary" href="${o.moreLink}" target="_blank" rel="nofollow noopener">Ver detalles</a>` : ``}
+          </div>
+        </div>
+      `).join('');
+
+      const faq = document.getElementById('faq');
+      faq.innerHTML = (data.faq||[]).map(f => `
+        <div style="margin:10px 0;">
+          <strong>${f.q}</strong>
+          <p style="margin:6px 0 0;">${f.a}</p>
+        </div>
+      `).join('');
+    }
+    main();
+  </script>
+</body>
+</html>
